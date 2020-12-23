@@ -1,0 +1,60 @@
+{% extends "auctions/layout.html" %}
+{% load static %}
+{% block head %}
+<!-- Mobile Specific Meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- Favicon-->
+<link rel="shortcut icon" href="img/fav.png">
+<!-- Author Meta -->
+<meta name="author" content="CodePixar">
+<!-- Meta Description -->
+<meta name="description" content="">
+<!-- Meta Keyword -->
+<meta name="keywords" content="">
+<!-- meta character set -->
+<meta charset="UTF-8">
+<!-- Site Title -->
+<title>Karma Shop</title>
+<!--
+  CSS
+  ============================================= -->
+<link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+<link rel="stylesheet" href="{% static 'css/nouislider.min.css' %}">
+<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ion.rangeSlider.skinFlat.css' %}" />
+<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+<link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% endblock %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    
+
+    <div class="container" id="listings">
+        {% for i in items %}
+        <div class="card mb-3" style="max-width: 540px;" id="card-listings">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{{i.imglink}}" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{i.title}}</h5>
+                  <p class="card-text">{{i.description}}</p>
+                  <p class="card-text">${{i.basebid}}</p>
+                  <a href="{% url 'listingpage' i.id %}"><button class="btn btn-outline-success">Bid Now!</button></a>
+                  <p class="card-text"><small class="text-muted">{{i.date}}</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+    </div>
+   
+{% endblock %}
